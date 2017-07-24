@@ -1,4 +1,4 @@
-from django.conf.urls import url  
+from django.conf.urls import url, include  
 from rest_framework.urlpatterns import format_suffix_patterns  
 from snippets import views
 
@@ -10,3 +10,9 @@ urlpatterns = [
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
+
+urlpatterns += [  
+	#탐색 가능한 API의 로그인 뷰와 로그아웃 뷰에 사용되는 URI 패턴
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
+]
